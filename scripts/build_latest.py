@@ -221,24 +221,67 @@ BATCH_SIZE = 3  # 每批合并的分类数
 
 MARKET_PERIODS = [("7", 7), ("14", 14), ("30", 30), ("all", None)]
 
-GENRE_GROUPS = [
-    {"name": "古风言情", "categories": ["古风世情", "古言脑洞", "宫斗宅斗", "种田"]},
-    {"name": "现代言情", "categories": ["现言脑洞", "豪门总裁", "职场婚恋", "青春甜宠"]},
-    {"name": "幻想言情", "categories": ["玄幻言情", "科幻末世", "悬疑脑洞", "女频悬疑"]},
-    {"name": "快穿衍生", "categories": ["快穿", "女频衍生"]},
-    {"name": "年代民国", "categories": ["年代", "民国言情"]},
-    {"name": "娱乐星光", "categories": ["星光璀璨"]},
-    {"name": "游戏体育", "categories": ["游戏体育"]},
+GENRE_GROUPS_MALE = [
+    {"name": "都市修真", "categories": ["都市修真", "都市高武", "都市脑洞", "都市日常", "都市种田"]},
+    {"name": "玄幻仙侠", "categories": ["东方仙侠", "传统玄幻", "玄幻脑洞", "西方奇幻"]},
+    {"name": "悬疑科幻", "categories": ["悬疑脑洞", "悬疑灵异", "科幻末世"]},
+    {"name": "历史军事", "categories": ["历史古代", "历史脑洞", "抗战谍战", "战神赘婿"]},
+    {"name": "衍生游戏", "categories": ["动漫衍生", "男频衍生", "游戏体育"]},
 ]
 
-MARKET_KEYWORDS = [
-    "重生", "穿书", "快穿", "系统", "空间", "团宠", "萌宝", "幼崽", "女配", "炮灰",
-    "反派", "权臣", "宅斗", "宫斗", "和离", "替嫁", "逃荒", "种田", "美食", "经商",
-    "年代", "七零", "八零", "军婚", "豪门", "总裁", "真假千金", "先婚后爱", "追妻",
-    "甜宠", "双洁", "强制爱", "无CP", "末世", "废土", "天灾", "囤货", "异能",
-    "国运", "星际", "修仙", "玄学", "无限流", "悬疑", "直播", "综艺", "娱乐圈",
-    "校园", "暗恋", "青梅竹马", "民国", "兽世", "远古", "基建",
+MARKET_KEYWORDS_MALE = [
+    "重生", "穿书", "系统", "空间", "签到", "神豪", "赘婿", "战神", "奶爸",
+    "都市", "修仙", "修真", "仙侠", "洪荒", "炼气", "宗门", "老祖", "剑修",
+    "反派", "龙王", "神医", "兵王", "透视", "鉴宝", "赌石", "文娱", "直播",
+    "游戏", "无限流", "副本", "悬疑", "灵异", "盗墓", "历史", "三国", "大明",
+    "抗战", "谍战", "末世", "废土", "天灾", "囤货", "异能", "国运", "星际",
+    "科幻", "机甲", "西幻", "领主", "种田", "争霸", "无敌", "打脸", "升级",
 ]
+
+GENRE_GROUPS_FEMALE = [
+    {"name": "古言世家", "categories": ["古风世情", "古言脑洞", "宫斗宅斗", "民国言情", "年代"]},
+    {"name": "现言情感", "categories": ["现言脑洞", "职场婚恋", "豪门总裁", "青春甜宠", "星光璀璨"]},
+    {"name": "幻想脑洞", "categories": ["玄幻言情", "科幻末世", "快穿", "悬疑脑洞", "女频悬疑"]},
+    {"name": "轻松种田", "categories": ["种田", "游戏体育", "女频衍生"]},
+]
+
+MARKET_KEYWORDS_FEMALE = [
+    "重生", "穿书", "系统", "空间", "马甲", "团宠", "萌宝", "神医", "玄学", "算命",
+    "宫斗", "宅斗", "嫡女", "庶女", "皇后", "王爷", "太子", "将军", "侯府", "世家",
+    "总裁", "豪门", "霸总", "隐婚", "闪婚", "离婚", "复婚", "追妻", "火葬场", "破镜重圆",
+    "甜宠", "先婚后爱", "暗恋", "双向奔赴", "年代", "知青", "七零", "八零", "种田", "美食",
+    "快穿", "女配", "反派", "虐渣", "复仇", "悬疑", "刑侦", "灵异", "科幻", "末世", "星际",
+]
+
+# 运行时按 --channel 选择（collect_market_* 系列函数以模块全局读取）
+GENRE_GROUPS = GENRE_GROUPS_MALE
+MARKET_KEYWORDS = MARKET_KEYWORDS_MALE
+CHANNEL_LABEL = "男频"
+
+CHANNEL_CONF = {
+    "male": {
+        "label": "男频",
+        "snapshot_prefix": "fanqie_male_new_ranks_",
+        "trends_subdir": "male",
+        "api_subdir": "male",
+        "latest_name": "latest_ranks_male.json",
+        "market_name": "market_summary_male.json",
+        "dates_name": "dates_male.json",
+        "genre_groups": GENRE_GROUPS_MALE,
+        "market_keywords": MARKET_KEYWORDS_MALE,
+    },
+    "female": {
+        "label": "女频",
+        "snapshot_prefix": "fanqie_female_new_ranks_",
+        "trends_subdir": "female",
+        "api_subdir": "female",
+        "latest_name": "latest_ranks_female.json",
+        "market_name": "market_summary_female.json",
+        "dates_name": "dates_female.json",
+        "genre_groups": GENRE_GROUPS_FEMALE,
+        "market_keywords": MARKET_KEYWORDS_FEMALE,
+    },
+}
 
 
 def build_batch_ai_prompt(batch: list) -> str:
@@ -365,16 +408,17 @@ def write_json(path: str, payload: dict):
         json.dump(payload, f, ensure_ascii=False, indent=2)
 
 
-def build_lastest_api(output: dict, base_dir: str):
+def build_lastest_api(output: dict, base_dir: str, api_subdir: str = "male"):
     """生成静态 lastest 数据接口。
 
     GitHub Pages 不支持动态 query API，因此这里将 type 参数映射为静态文件：
-    - api/lastest/all.json：全量数据
-    - api/lastest/<type>.json：单个类型数据
-    - api/lastest.json / api/lastest/index.json：类型索引
+    - api/lastest/{channel}/all.json：全量数据
+    - api/lastest/{channel}/<type>.json：单个类型数据
+    - api/lastest/{channel}/index.json：类型索引
+    - api/lastest.json：双频道总索引（channels 字段）
     """
     api_root = os.path.join(base_dir, "api")
-    lastest_dir = os.path.join(api_root, "lastest")
+    lastest_dir = os.path.join(api_root, "lastest", api_subdir)
     os.makedirs(lastest_dir, exist_ok=True)
     for old_path in glob.glob(os.path.join(lastest_dir, "*.json")):
         os.remove(old_path)
@@ -431,7 +475,19 @@ def build_lastest_api(output: dict, base_dir: str):
         "types": types,
     }
     write_json(os.path.join(lastest_dir, "index.json"), index_payload)
-    write_json(os.path.join(api_root, "lastest.json"), index_payload)
+
+    # 合并双频道总索引 api/lastest.json（保留另一频道已生成的部分）
+    combined_path = os.path.join(api_root, "lastest.json")
+    combined = {}
+    if os.path.exists(combined_path):
+        try:
+            with open(combined_path, "r", encoding="utf-8") as f:
+                combined = json.load(f)
+        except Exception:
+            combined = {}
+    combined.setdefault("channels", {})[api_subdir] = index_payload
+    combined["date"] = date
+    write_json(combined_path, combined)
 
     return lastest_dir
 
@@ -711,7 +767,7 @@ def build_market_ai_prompt(payload: dict) -> str:
             f"- 规则兜底: {data['fallback_summary']}"
         )
 
-    return f"""你是一位网文市场编辑，请根据番茄女频新书榜的统计结果，为每个周期生成一段全站热点判断。
+    return f"""你是一位网文市场编辑，请根据番茄{CHANNEL_LABEL}新书榜的统计结果，为每个周期生成一段全站热点判断。
 
 {chr(10).join(sections)}
 
@@ -946,21 +1002,30 @@ def generate_ai_summaries(categories: list, trends: dict,
 
 
 def main():
-    parser = argparse.ArgumentParser(description="构建 latest_ranks.json")
+    parser = argparse.ArgumentParser(description="构建 latest_ranks.json（支持男女双频道）")
     parser.add_argument("--force", action="store_true",
                         help="强制重新生成所有 AI 总结，忽略已有总结")
     parser.add_argument("--date", type=str, default="",
                         help="指定目标日期 (YYYY-MM-DD)，默认使用最新快照")
+    parser.add_argument("--channel", type=str, default="male",
+                        choices=["male", "female"],
+                        help="频道：male(男频)/female(女频)，默认 male")
     args = parser.parse_args()
+
+    global GENRE_GROUPS, MARKET_KEYWORDS, CHANNEL_LABEL
+    conf = CHANNEL_CONF[args.channel]
+    GENRE_GROUPS = conf["genre_groups"]
+    MARKET_KEYWORDS = conf["market_keywords"]
+    CHANNEL_LABEL = conf["label"]
 
     base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     data_dir = os.path.join(base_dir, "data")
-    trends_dir = os.path.join(data_dir, "trends")
+    trends_dir = os.path.join(data_dir, "trends", conf["trends_subdir"])
     os.makedirs(trends_dir, exist_ok=True)
 
     # 查找 JSON 快照文件
     snapshots = sorted(
-        glob.glob(os.path.join(data_dir, "fanqie_female_new_ranks_*.json"))
+        glob.glob(os.path.join(data_dir, f"{conf['snapshot_prefix']}*.json"))
     )
 
     if not snapshots:
@@ -971,7 +1036,7 @@ def main():
     if args.date:
         target_date_compact = args.date.replace("-", "")
         target_path = os.path.join(
-            data_dir, f"fanqie_female_new_ranks_{target_date_compact}.json"
+            data_dir, f"{conf['snapshot_prefix']}{target_date_compact}.json"
         )
         if not os.path.exists(target_path):
             print(f"❌ 未找到 {args.date} 的快照文件: {target_path}")
@@ -1078,14 +1143,14 @@ def main():
         }
         output["categories"].append(cat_output)
 
-    # 写入 latest_ranks.json
-    out_path = os.path.join(data_dir, "latest_ranks.json")
+    # 写入 latest_ranks_{channel}.json
+    out_path = os.path.join(data_dir, conf["latest_name"])
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
     print(f"\n✅ 已生成: {out_path}")
 
-    # 生成静态 API 文件：api/lastest/all.json + api/lastest/<type>.json
-    api_dir = build_lastest_api(output, base_dir)
+    # 生成静态 API 文件：api/lastest/{channel}/all.json + <type>.json
+    api_dir = build_lastest_api(output, base_dir, conf["api_subdir"])
     print(f"✅ Lastest API: {api_dir}")
 
     # 写入 trends/YYYY-MM-DD.json
@@ -1104,19 +1169,19 @@ def main():
         market_payload = enrich_market_summary_with_ai(
             market_payload, api_key, api_base_url, api_model
         )
-    market_path = os.path.join(data_dir, "market_summary.json")
+    market_path = os.path.join(data_dir, conf["market_name"])
     write_json(market_path, market_payload)
     print(f"✅ 全站热点总结: {market_path}")
 
-    # 生成 dates.json 索引（供前端历史日期选择器使用）
+    # 生成 dates_{channel}.json 索引（供前端历史日期选择器使用）
     date_list = []
     for s in snapshots:
         fname = os.path.basename(s)
-        # fanqie_female_new_ranks_YYYYMMDD.json -> YYYY-MM-DD
+        # fanqie_{channel}_new_ranks_YYYYMMDD.json -> YYYY-MM-DD
         m = re.search(r"(\d{4})(\d{2})(\d{2})", fname)
         if m:
             date_list.append(f"{m.group(1)}-{m.group(2)}-{m.group(3)}")
-    dates_path = os.path.join(data_dir, "dates.json")
+    dates_path = os.path.join(data_dir, conf["dates_name"])
     with open(dates_path, "w", encoding="utf-8") as f:
         json.dump({"dates": sorted(date_list)}, f, ensure_ascii=False, indent=2)
     print(f"✅ 日期索引: {dates_path} ({len(date_list)} 个日期)")

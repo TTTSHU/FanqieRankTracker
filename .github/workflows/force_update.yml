@@ -78,8 +78,11 @@ jobs:
       env:
         GITHUB_ACTIONS: true
 
-    - name: Build Latest Data with AI Summary (Force)
-      run: pip install openai && python scripts/build_latest.py --force --date ${{ steps.date.outputs.dash_date }}
+    - name: Build Latest Data with AI Summary (Force, 双频道)
+      run: |
+        pip install openai
+        python scripts/build_latest.py --force --date ${{ steps.date.outputs.dash_date }} --channel male
+        python scripts/build_latest.py --force --date ${{ steps.date.outputs.dash_date }} --channel female
       env:
         API_BASE_URL: ${{ secrets.API_BASE_URL }}
         API_KEY: ${{ secrets.API_KEY }}

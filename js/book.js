@@ -2,6 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const detail = document.getElementById('book-detail');
     const cacheBuster = `v=${Math.floor(Date.now() / 600000)}`;
     const maxDays = 30;
+
+    // 频道：URL ?channel= 优先，其次 localStorage，默认男频
+    function getChannel() {
+        const params = new URLSearchParams(window.location.search);
+        const fromUrl = params.get('channel');
+        if (fromUrl === 'male' || fromUrl === 'female') return fromUrl;
+        const saved = localStorage.getItem('fanqie_channel');
+        return (saved === 'male' || saved === 'female') ? saved : 'male';
+    }
+    const CHANNEL = getChannel();
     const copyToast = document.createElement('div');
     copyToast.className = 'copy-toast';
     copyToast.textContent = '书本信息已复制';
@@ -20,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const dateIndex = await fetchJson(`data/dates.json?${cacheBuster}`);
+            const dateIndex = await fetchJson(`data/dates_${CHANNEL}.json?${cacheBuster}`);
             const dates = (dateIndex.dates || []).slice().sort().slice(-maxDays);
             const snapshots = await Promise.all(
                 dates.map(date => fetchJson(`${snapshotUrl(date)}?${cacheBuster}`).catch(() => null))
@@ -40,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function snapshotUrl(date) {
-        return `data/fanqie_female_new_ranks_${date.replace(/-/g, '')}.json`;
+        return `data/fanqie_${CHANNEL}_new_ranks_${date.replace(/-/g, '')}.json`;
     }
 
     function fetchJson(url) {

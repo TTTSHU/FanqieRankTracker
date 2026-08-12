@@ -4,6 +4,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const rangeButtons = document.querySelectorAll('.range-btn');
     const cacheBuster = `v=${Math.floor(Date.now() / 600000)}`;
 
+    // ========== 频道切换：URL ?channel= 优先，其次 localStorage，默认男频 ==========
+    function getChannel() {
+        const params = new URLSearchParams(window.location.search);
+        const fromUrl = params.get('channel');
+        if (fromUrl === 'male' || fromUrl === 'female') return fromUrl;
+        const saved = localStorage.getItem('fanqie_channel');
+        return (saved === 'male' || saved === 'female') ? saved : 'male';
+    }
+    const CHANNEL = getChannel();
+
+    const channelSwitch = document.getElementById('channel-switch');
+    if (channelSwitch) {
+        channelSwitch.querySelectorAll('.channel-btn').forEach(btn => {
+            if (btn.dataset.channel === CHANNEL) btn.classList.add('active');
+            btn.addEventListener('click', () => {
+                localStorage.setItem('fanqie_channel', btn.dataset.channel);
+                location.reload();
+            });
+        });
+    }
+    // 返回榜单链接带上当前频道
+    document.querySelector('.back-link')?.setAttribute('href', `index.html?channel=${CHANNEL}`);
+
     let categories = [];
     let trendRows = [];
     let latestData = null;
@@ -11,15 +34,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let selectedCategory = '';
     let selectedDays = 7;
 
-    const genreGroups = [
-        { name: '古风言情', categories: ['古风世情', '古言脑洞', '宫斗宅斗', '种田'] },
-        { name: '现代言情', categories: ['现言脑洞', '豪门总裁', '职场婚恋', '青春甜宠'] },
-        { name: '幻想言情', categories: ['玄幻言情', '科幻末世', '悬疑脑洞', '女频悬疑'] },
-        { name: '快穿衍生', categories: ['快穿', '女频衍生'] },
-        { name: '年代民国', categories: ['年代', '民国言情'] },
-        { name: '娱乐星光', categories: ['星光璀璨'] },
-        { name: '游戏体育', categories: ['游戏体育'] },
-    ];
+    const GENRE_GROUPS_ALL = {
+        male: [
+            { name: '都市修真', categories: ['都市修真', '都市高武', '都市脑洞', '都市日常', '都市种田'] },
+            { name: '玄幻仙侠', categories: ['东方仙侠', '传统玄幻', '玄幻脑洞', '西方奇幻'] },
+            { name: '悬疑科幻', categories: ['悬疑脑洞', '悬疑灵异', '科幻末世'] },
+            { name: '历史军事', categories: ['历史古代', '历史脑洞', '抗战谍战', '战神赘婿'] },
+            { name: '衍生游戏', categories: ['动漫衍生', '男频衍生', '游戏体育'] },
+        ],
+        female: [
+            { name: '古言世家', categories: ['古风世情', '古言脑洞', '宫斗宅斗', '民国言情', '年代'] },
+            { name: '现言情感', categories: ['现言脑洞', '职场婚恋', '豪门总裁', '青春甜宠', '星光璀璨'] },
+            { name: '幻想脑洞', categories: ['玄幻言情', '科幻末世', '快穿', '悬疑脑洞', '女频悬疑'] },
+            { name: '轻松种田', categories: ['种田', '游戏体育', '女频衍生'] },
+        ],
+    };
+    const genreGroups = GENRE_GROUPS_ALL[CHANNEL] || GENRE_GROUPS_ALL.male;
 
     const els = {
         marketSummary: document.getElementById('market-summary'),
@@ -35,14 +65,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     init();
 
+    // 副标题标注当前频道
+    const CHANNEL_LABEL = CHANNEL === 'male' ? '男频' : '女频';
+    if (subtitle && subtitle.textContent === '加载中...') {
+        subtitle.textContent = `${CHANNEL_LABEL} · 类型风向标`;
+    }
+
     async function init() {
         try {
             const [dateIndex, latestIndex, latestAll, marketSummary] = await Promise.all([
-                fetchJson(`data/dates.json?${cacheBuster}`),
-                fetchJson(`api/lastest.json?${cacheBuster}`).catch(() => null),
-                fetchJson(`api/lastest/all.json?${cacheBuster}`)
-                    .catch(() => fetchJson(`data/latest_ranks.json?${cacheBuster}`)),
-                fetchJson(`data/market_summary.json?${cacheBuster}`).catch(() => null),
+                fetchJson(`data/dates_${CHANNEL}.json?${cacheBuster}`),
+                fetchJson(`api/lastest/${CHANNEL}/index.json?${cacheBuster}`).catch(() => null),
+                fetchJson(`api/lastest/${CHANNEL}/all.json?${cacheBuster}`)
+                    .catch(() => fetchJson(`data/latest_ranks_${CHANNEL}.json?${cacheBuster}`)),
+                fetchJson(`data/market_summary_${CHANNEL}.json?${cacheBuster}`).catch(() => null),
             ]);
             latestData = latestAll;
             marketSummaryData = marketSummary;
@@ -54,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dates = (dateIndex.dates || []).slice().sort();
             const trendDates = dates.slice(1);
             const trendFiles = await Promise.all(
-                trendDates.map(date => fetchJson(`data/trends/${date}.json?${cacheBuster}`).catch(() => null))
+                trendDates.map(date => fetchJson(`data/trends/${CHANNEL}/${date}.json?${cacheBuster}`).catch(() => null))
             );
             trendRows = trendFiles
                 .filter(Boolean)
@@ -77,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function loadCategoriesFallback() {
-        const latest = await fetchJson(`data/latest_ranks.json?${cacheBuster}`);
+        const latest = await fetchJson(`data/latest_ranks_${CHANNEL}.json?${cacheBuster}`);
         return (latest.categories || []).map(cat => cat.name);
     }
 

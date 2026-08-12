@@ -22,6 +22,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cache-busting: 每10分钟一个新key，避免浏览器缓存旧JSON
     const cacheBuster = `v=${Math.floor(Date.now() / 600000)}`;
 
+    // ========== 频道切换：URL ?channel= 优先，其次 localStorage，默认男频 ==========
+    function getChannel() {
+        const params = new URLSearchParams(window.location.search);
+        const fromUrl = params.get('channel');
+        if (fromUrl === 'male' || fromUrl === 'female') return fromUrl;
+        const saved = localStorage.getItem('fanqie_channel');
+        return (saved === 'male' || saved === 'female') ? saved : 'male';
+    }
+    const CHANNEL = getChannel();
+
+    const channelSwitch = document.getElementById('channel-switch');
+    if (channelSwitch) {
+        channelSwitch.querySelectorAll('.channel-btn').forEach(btn => {
+            if (btn.dataset.channel === CHANNEL) btn.classList.add('active');
+            btn.addEventListener('click', () => {
+                localStorage.setItem('fanqie_channel', btn.dataset.channel);
+                location.reload();
+            });
+        });
+    }
+    // 风向标链接带上当前频道
+    document.querySelector('.trend-link-btn')?.setAttribute('href', `trend.html?channel=${CHANNEL}`);
+
     // ========== Copy Toast ==========
     const copyToast = document.createElement('div');
     copyToast.className = 'copy-toast';
@@ -170,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========== Load dates index, then load latest ==========
-    fetch(`data/dates.json?${cacheBuster}`)
+    fetch(`data/dates_${CHANNEL}.json?${cacheBuster}`)
         .then(r => r.ok ? r.json() : Promise.reject('No dates.json'))
         .then(idx => {
             availableDates = idx.dates || [];
@@ -189,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
     function loadLatestData() {
-        return fetch(`data/latest_ranks.json?${cacheBuster}`)
+        return fetch(`data/latest_ranks_${CHANNEL}.json?${cacheBuster}`)
             .then(r => {
                 if (!r.ok) throw new Error('Network error');
                 return r.json();
@@ -214,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadDateData(dateStr) {
-        // dateStr = "YYYY-MM-DD", file = fanqie_female_new_ranks_YYYYMMDD.json
+        // dateStr = "YYYY-MM-DD", file = fanqie_{channel}_new_ranks_YYYYMMDD.json
         const fileDateStr = dateStr.replace(/-/g, '');
         const isLatest = currentDateIndex === availableDates.length - 1;
 
@@ -227,8 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Show loading state
         waterfall.innerHTML = '<p style="color:var(--text-muted);padding:20px;">加载中...</p>';
 
-        const snapshotUrl = `data/fanqie_female_new_ranks_${fileDateStr}.json?${cacheBuster}`;
-        const trendUrl = `data/trends/${dateStr}.json?${cacheBuster}`;
+        const snapshotUrl = `data/fanqie_${CHANNEL}_new_ranks_${fileDateStr}.json?${cacheBuster}`;
+        const trendUrl = `data/trends/${CHANNEL}/${dateStr}.json?${cacheBuster}`;
 
         // Load snapshot + trends in parallel
         Promise.all([
@@ -448,7 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rank = index + 1;
             const card = document.createElement('a');
             const bookId = extractBookId(book.url);
-            card.href = bookId ? `book.html?id=${encodeURIComponent(bookId)}` : 'javascript:void(0)';
+            card.href = bookId ? `book.html?id=${encodeURIComponent(bookId)}&channel=${CHANNEL}` : 'javascript:void(0)';
             card.rel = 'noopener';
             card.className = 'book-card';
 
