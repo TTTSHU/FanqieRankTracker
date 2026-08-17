@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-16",
+  "date": "2026-08-17",
   "prev_date": "",
   "types": [
     {
@@ -106,14 +106,14 @@
   ],
   "channels": {
     "male": {
-      "date": "2026-08-16",
-      "prev_date": "2026-08-15",
+      "date": "2026-08-17",
+      "prev_date": "2026-08-16",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 19,
-          "book_count": 570
+          "book_count": 560
         },
         {
           "type": "西方奇幻",
@@ -188,7 +188,7 @@
         {
           "type": "悬疑灵异",
           "url": "api/lastest/%E6%82%AC%E7%96%91%E7%81%B5%E5%BC%82.json",
-          "book_count": 30
+          "book_count": 20
         },
         {
           "type": "抗战谍战",
@@ -213,14 +213,14 @@
       ]
     },
     "female": {
-      "date": "2026-08-16",
-      "prev_date": "2026-08-15",
+      "date": "2026-08-17",
+      "prev_date": "2026-08-16",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 18,
-          "book_count": 540
+          "book_count": 520
         },
         {
           "type": "古风世情",
@@ -255,7 +255,7 @@
         {
           "type": "年代",
           "url": "api/lastest/%E5%B9%B4%E4%BB%A3.json",
-          "book_count": 30
+          "book_count": 10
         },
         {
           "type": "现言脑洞",
