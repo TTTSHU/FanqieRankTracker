@@ -1,5 +1,5 @@
 {
-  "date": "2026-08-17",
+  "date": "2026-08-18",
   "prev_date": "",
   "types": [
     {
@@ -106,8 +106,8 @@
   ],
   "channels": {
     "male": {
-      "date": "2026-08-17",
-      "prev_date": "2026-08-16",
+      "date": "2026-08-18",
+      "prev_date": "2026-08-17",
       "types": [
         {
           "type": "all",
@@ -188,7 +188,7 @@
         {
           "type": "悬疑灵异",
           "url": "api/lastest/%E6%82%AC%E7%96%91%E7%81%B5%E5%BC%82.json",
-          "book_count": 20
+          "book_count": 30
         },
         {
           "type": "抗战谍战",
@@ -198,7 +198,7 @@
         {
           "type": "游戏体育",
           "url": "api/lastest/%E6%B8%B8%E6%88%8F%E4%BD%93%E8%82%B2.json",
-          "book_count": 30
+          "book_count": 20
         },
         {
           "type": "动漫衍生",
@@ -213,14 +213,14 @@
       ]
     },
     "female": {
-      "date": "2026-08-17",
-      "prev_date": "2026-08-16",
+      "date": "2026-08-18",
+      "prev_date": "2026-08-17",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 18,
-          "book_count": 520
+          "book_count": 519
         },
         {
           "type": "古风世情",
@@ -240,7 +240,7 @@
         {
           "type": "女频衍生",
           "url": "api/lastest/%E5%A5%B3%E9%A2%91%E8%A1%8D%E7%94%9F.json",
-          "book_count": 30
+          "book_count": 29
         },
         {
           "type": "玄幻言情",
@@ -250,12 +250,12 @@
         {
           "type": "种田",
           "url": "api/lastest/%E7%A7%8D%E7%94%B0.json",
-          "book_count": 30
+          "book_count": 10
         },
         {
           "type": "年代",
           "url": "api/lastest/%E5%B9%B4%E4%BB%A3.json",
-          "book_count": 10
+          "book_count": 30
         },
         {
           "type": "现言脑洞",
