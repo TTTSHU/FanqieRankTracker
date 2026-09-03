@@ -1,12 +1,12 @@
 {
-  "date": "2026-09-02",
-  "prev_date": "2026-08-31",
+  "date": "2026-09-03",
+  "prev_date": "2026-09-02",
   "types": [
     {
       "type": "all",
       "url": "api/lastest/all.json",
       "category_count": 19,
-      "book_count": 570
+      "book_count": 569
     },
     {
       "type": "西方奇幻",
@@ -16,7 +16,7 @@
     {
       "type": "东方仙侠",
       "url": "api/lastest/%E4%B8%9C%E6%96%B9%E4%BB%99%E4%BE%A0.json",
-      "book_count": 30
+      "book_count": 29
     },
     {
       "type": "科幻末世",
