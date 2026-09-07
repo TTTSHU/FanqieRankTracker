@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-06",
+  "date": "2026-09-07",
   "prev_date": "",
   "types": [
     {
@@ -106,14 +106,14 @@
   ],
   "channels": {
     "male": {
-      "date": "2026-09-06",
-      "prev_date": "2026-09-05",
+      "date": "2026-09-07",
+      "prev_date": "2026-09-06",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 19,
-          "book_count": 569
+          "book_count": 570
         },
         {
           "type": "西方奇幻",
@@ -138,7 +138,7 @@
         {
           "type": "都市修真",
           "url": "api/lastest/%E9%83%BD%E5%B8%82%E4%BF%AE%E7%9C%9F.json",
-          "book_count": 29
+          "book_count": 30
         },
         {
           "type": "都市高武",
@@ -213,19 +213,19 @@
       ]
     },
     "female": {
-      "date": "2026-09-06",
-      "prev_date": "2026-09-05",
+      "date": "2026-09-07",
+      "prev_date": "2026-09-06",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 18,
-          "book_count": 540
+          "book_count": 539
         },
         {
           "type": "古风世情",
           "url": "api/lastest/%E5%8F%A4%E9%A3%8E%E4%B8%96%E6%83%85.json",
-          "book_count": 30
+          "book_count": 29
         },
         {
           "type": "科幻末世",
