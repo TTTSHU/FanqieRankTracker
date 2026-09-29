@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-28",
+  "date": "2026-09-29",
   "prev_date": "",
   "types": [
     {
@@ -106,8 +106,8 @@
   ],
   "channels": {
     "male": {
-      "date": "2026-09-28",
-      "prev_date": "2026-09-27",
+      "date": "2026-09-29",
+      "prev_date": "2026-09-28",
       "types": [
         {
           "type": "all",
@@ -213,8 +213,8 @@
       ]
     },
     "female": {
-      "date": "2026-09-28",
-      "prev_date": "2026-09-27",
+      "date": "2026-09-29",
+      "prev_date": "2026-09-28",
       "types": [
         {
           "type": "all",
@@ -225,7 +225,7 @@
         {
           "type": "古风世情",
           "url": "api/lastest/%E5%8F%A4%E9%A3%8E%E4%B8%96%E6%83%85.json",
-          "book_count": 29
+          "book_count": 30
         },
         {
           "type": "科幻末世",
@@ -270,7 +270,7 @@
         {
           "type": "悬疑脑洞",
           "url": "api/lastest/%E6%82%AC%E7%96%91%E8%84%91%E6%B4%9E.json",
-          "book_count": 30
+          "book_count": 29
         },
         {
           "type": "古言脑洞",
