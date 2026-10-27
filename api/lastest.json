@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-26",
+  "date": "2026-10-27",
   "prev_date": "",
   "types": [
     {
@@ -106,14 +106,14 @@
   ],
   "channels": {
     "male": {
-      "date": "2026-10-26",
-      "prev_date": "2026-10-25",
+      "date": "2026-10-27",
+      "prev_date": "2026-10-26",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 19,
-          "book_count": 563
+          "book_count": 524
         },
         {
           "type": "西方奇幻",
@@ -153,7 +153,7 @@
         {
           "type": "战神赘婿",
           "url": "api/lastest/%E6%88%98%E7%A5%9E%E8%B5%98%E5%A9%BF.json",
-          "book_count": 23
+          "book_count": 24
         },
         {
           "type": "都市种田",
@@ -183,7 +183,7 @@
         {
           "type": "玄幻脑洞",
           "url": "api/lastest/%E7%8E%84%E5%B9%BB%E8%84%91%E6%B4%9E.json",
-          "book_count": 30
+          "book_count": 10
         },
         {
           "type": "悬疑灵异",
@@ -193,7 +193,7 @@
         {
           "type": "抗战谍战",
           "url": "api/lastest/%E6%8A%97%E6%88%98%E8%B0%8D%E6%88%98.json",
-          "book_count": 30
+          "book_count": 10
         },
         {
           "type": "游戏体育",
@@ -213,14 +213,14 @@
       ]
     },
     "female": {
-      "date": "2026-10-26",
-      "prev_date": "2026-10-25",
+      "date": "2026-10-27",
+      "prev_date": "2026-10-26",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 18,
-          "book_count": 540
+          "book_count": 530
         },
         {
           "type": "古风世情",
@@ -270,7 +270,7 @@
         {
           "type": "悬疑脑洞",
           "url": "api/lastest/%E6%82%AC%E7%96%91%E8%84%91%E6%B4%9E.json",
-          "book_count": 30
+          "book_count": 20
         },
         {
           "type": "古言脑洞",
