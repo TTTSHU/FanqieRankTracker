@@ -1,12 +1,12 @@
 {
-  "date": "2026-10-27",
-  "prev_date": "2026-10-26",
+  "date": "2026-10-28",
+  "prev_date": "2026-10-27",
   "types": [
     {
       "type": "all",
       "url": "api/lastest/all.json",
       "category_count": 19,
-      "book_count": 524
+      "book_count": 566
     },
     {
       "type": "西方奇幻",
@@ -46,7 +46,7 @@
     {
       "type": "战神赘婿",
       "url": "api/lastest/%E6%88%98%E7%A5%9E%E8%B5%98%E5%A9%BF.json",
-      "book_count": 24
+      "book_count": 26
     },
     {
       "type": "都市种田",
@@ -76,7 +76,7 @@
     {
       "type": "玄幻脑洞",
       "url": "api/lastest/%E7%8E%84%E5%B9%BB%E8%84%91%E6%B4%9E.json",
-      "book_count": 10
+      "book_count": 30
     },
     {
       "type": "悬疑灵异",
@@ -86,7 +86,7 @@
     {
       "type": "抗战谍战",
       "url": "api/lastest/%E6%8A%97%E6%88%98%E8%B0%8D%E6%88%98.json",
-      "book_count": 10
+      "book_count": 30
     },
     {
       "type": "游戏体育",
