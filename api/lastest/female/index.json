@@ -1,22 +1,22 @@
 {
-  "date": "2026-11-08",
-  "prev_date": "2026-11-07",
+  "date": "2026-11-09",
+  "prev_date": "2026-11-08",
   "types": [
     {
       "type": "all",
       "url": "api/lastest/all.json",
       "category_count": 18,
-      "book_count": 540
+      "book_count": 430
     },
     {
       "type": "古风世情",
       "url": "api/lastest/%E5%8F%A4%E9%A3%8E%E4%B8%96%E6%83%85.json",
-      "book_count": 30
+      "book_count": 20
     },
     {
       "type": "科幻末世",
       "url": "api/lastest/%E7%A7%91%E5%B9%BB%E6%9C%AB%E4%B8%96.json",
-      "book_count": 30
+      "book_count": 10
     },
     {
       "type": "游戏体育",
@@ -36,7 +36,7 @@
     {
       "type": "种田",
       "url": "api/lastest/%E7%A7%8D%E7%94%B0.json",
-      "book_count": 30
+      "book_count": 0
     },
     {
       "type": "年代",
@@ -76,7 +76,7 @@
     {
       "type": "星光璀璨",
       "url": "api/lastest/%E6%98%9F%E5%85%89%E7%92%80%E7%92%A8.json",
-      "book_count": 30
+      "book_count": 10
     },
     {
       "type": "女频悬疑",
@@ -86,7 +86,7 @@
     {
       "type": "职场婚恋",
       "url": "api/lastest/%E8%81%8C%E5%9C%BA%E5%A9%9A%E6%81%8B.json",
-      "book_count": 30
+      "book_count": 0
     },
     {
       "type": "豪门总裁",
