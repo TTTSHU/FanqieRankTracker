@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-22",
+  "date": "2026-11-24",
   "prev_date": "",
   "types": [
     {
@@ -106,14 +106,14 @@
   ],
   "channels": {
     "male": {
-      "date": "2026-11-22",
-      "prev_date": "2026-11-21",
+      "date": "2026-11-24",
+      "prev_date": "2026-11-22",
       "types": [
         {
           "type": "all",
           "url": "api/lastest/all.json",
           "category_count": 19,
-          "book_count": 564
+          "book_count": 555
         },
         {
           "type": "西方奇幻",
@@ -123,7 +123,7 @@
         {
           "type": "东方仙侠",
           "url": "api/lastest/%E4%B8%9C%E6%96%B9%E4%BB%99%E4%BE%A0.json",
-          "book_count": 30
+          "book_count": 20
         },
         {
           "type": "科幻末世",
@@ -153,7 +153,7 @@
         {
           "type": "战神赘婿",
           "url": "api/lastest/%E6%88%98%E7%A5%9E%E8%B5%98%E5%A9%BF.json",
-          "book_count": 24
+          "book_count": 25
         },
         {
           "type": "都市种田",
@@ -213,8 +213,8 @@
       ]
     },
     "female": {
-      "date": "2026-11-22",
-      "prev_date": "2026-11-21",
+      "date": "2026-11-24",
+      "prev_date": "2026-11-22",
       "types": [
         {
           "type": "all",
